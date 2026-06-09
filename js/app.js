@@ -50,11 +50,10 @@ document.querySelectorAll(".faq-q").forEach(btn=>{
 });
 
 /* ------------------------------------------------------------
-   Inquiry form — Formspree (no backend)
-   TODO: paste your real endpoint into the form's `action`
-         (https://formspree.io/f/XXXXXXXX) in index.html / inquire.html.
-   Until then the success state still shows after the required-field
-   guard passes, so the page is testable.
+   Inquiry form — posts via fetch to the form's `action`
+   (FormSubmit.co → info@longstoryfilms.com). On a 2xx JSON response
+   the success message is shown without leaving the page.
+   First submission requires a one-time email activation by the owner.
    ------------------------------------------------------------ */
 const form=document.getElementById("inquiryForm");
 if(form){
@@ -87,11 +86,11 @@ if(form){
       if(res.ok){showSuccess();}
       else{
         if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity="";}
-        alert("Something went wrong sending your message. Please email hello@longstoryfilms.com.");
+        alert("Something went wrong sending your message. Please email info@longstoryfilms.com.");
       }
     }catch(err){
       if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity="";}
-      alert("Network error. Please email hello@longstoryfilms.com.");
+      alert("Network error. Please email info@longstoryfilms.com.");
     }
   });
 }

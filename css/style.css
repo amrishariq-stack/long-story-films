@@ -1,0 +1,600 @@
+/* ============================================================
+   Long Story Films — warm bone + charcoal editorial identity
+   Locked palette · two-font system · restraint over ornament
+   ============================================================ */
+:root{
+  --bone:#F5F1EA;          /* warm off-white page background */
+  --bone-deep:#EDE7DB;     /* alternate section background */
+  --charcoal:#1A1A1A;      /* primary text */
+  --charcoal-soft:#262320; /* dark footer / inverted band */
+  --ink-muted:#6E665A;     /* warm grey for body / secondary */
+  --ink-faint:#9A9082;     /* labels, fine print */
+  --accent:#A8895B;        /* warm gold — single accent. Swap to #6B2C2C for oxblood */
+  --accent-deep:#8E713F;
+  --line:rgba(26,26,26,0.14);
+  --line-soft:rgba(26,26,26,0.08);
+  --serif:'Cormorant', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', system-ui, -apple-system, sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --maxw:1200px;
+  --gut:clamp(1.4rem,5vw,5rem);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;-webkit-text-size-adjust:100%;}
+body{
+  background:var(--bone);
+  color:var(--charcoal);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:clip;            /* clip (not hidden) so position:sticky still works */
+}
+::selection{background:var(--accent);color:var(--bone);}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* faint paper warmth so the bone never reads flat */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%, rgba(168,137,91,0.05), transparent 60%);
+}
+
+/* ---- shared type ---- */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--accent-deep);
+}
+.serif{font-family:var(--serif);}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-0.01em;}
+.italic{font-style:italic;}
+
+.container{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut);}
+.section{padding:clamp(5rem,11vw,9rem) 0;}
+.rule{width:46px;height:1px;background:var(--accent);margin:1.6rem 0;}
+.center{text-align:center;}
+
+/* buttons — minimal, by design */
+.btn{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  font-family:var(--sans);font-size:0.74rem;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;
+  padding:1rem 2.1rem;border:1px solid var(--charcoal);
+  color:var(--charcoal);background:transparent;cursor:pointer;
+  transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease);
+}
+.btn:hover{background:var(--charcoal);color:var(--bone);}
+.btn-gold{border-color:var(--accent);color:var(--accent-deep);}
+.btn-gold:hover{background:var(--accent);color:var(--bone);border-color:var(--accent);}
+.btn .arrow{transition:transform .4s var(--ease);}
+.btn:hover .arrow{transform:translateX(4px);}
+.link-arrow{
+  font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent-deep);border-bottom:1px solid var(--line);padding-bottom:3px;
+  transition:border-color .4s var(--ease);
+}
+.link-arrow:hover{border-color:var(--accent);}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.5rem 0;
+  transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s var(--ease);
+}
+.site-header.scrolled{
+  background:rgba(245,241,234,0.92);
+  backdrop-filter:saturate(120%) blur(10px);
+  padding:0.95rem 0;
+  box-shadow:0 1px 0 var(--line-soft);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;}
+.logo{
+  font-family:var(--serif);font-size:1.25rem;font-weight:500;
+  letter-spacing:0.04em;color:var(--charcoal);
+}
+.logo .light{font-weight:300;font-style:italic;}
+.nav{display:flex;align-items:center;gap:clamp(1.4rem,2.6vw,2.8rem);}
+.nav a{
+  font-size:0.72rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--charcoal);opacity:0.8;transition:opacity .3s var(--ease);
+}
+.nav a:hover{opacity:1;}
+.nav .nav-cta{color:var(--accent-deep);border-bottom:1px solid var(--accent);padding-bottom:2px;opacity:1;}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;font-size:0.72rem;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal);}
+
+/* ============================================================
+   Hero (typographic — no fabricated imagery)
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding-top:6rem;padding-bottom:4rem;overflow:hidden;
+}
+.hero-inner{max-width:1000px;}
+.hero .eyebrow{display:block;margin-bottom:2rem;}
+.hero h1{
+  font-size:clamp(2.9rem,8.5vw,7.4rem);
+  font-weight:300;line-height:0.98;letter-spacing:-0.02em;
+}
+.hero h1 .second{display:block;font-style:italic;color:var(--charcoal);}
+.hero h1 .second em{color:var(--accent-deep);font-style:italic;}
+.hero-sub{
+  margin-top:2.4rem;max-width:46ch;
+  font-size:clamp(1rem,1.5vw,1.18rem);color:var(--ink-muted);line-height:1.7;
+}
+.hero-cta{margin-top:3rem;display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;}
+.scroll-cue{
+  position:absolute;bottom:2rem;right:var(--gut);left:auto;
+  display:flex;align-items:center;gap:0.8rem;
+  font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink-faint);
+}
+.scroll-cue .stem{width:34px;height:1px;background:var(--accent);transform-origin:left;
+  animation:cue 2.4s var(--ease) infinite;}
+@keyframes cue{0%{transform:scaleX(0);}45%{transform:scaleX(1);transform-origin:left;}
+  55%{transform:scaleX(1);transform-origin:right;}100%{transform:scaleX(0);transform-origin:right;}}
+
+/*  OPTIONAL HERO FILM LOOP — once Signature Film #1 exists, drop a muted
+    15–30s loop here and uncomment. Keep under ~12MB. Until then the
+    typographic hero carries it (brand rule: never stock footage).
+    <video class="hero-video" autoplay muted loop playsinline poster="hero-still.jpg">
+      <source src="hero-loop.mp4" type="video/mp4" />
+    </video>
+*/
+
+/* ============================================================
+   Tagline statement band
+   ============================================================ */
+.tagline-band{
+  background:var(--bone-deep);
+  padding:clamp(5rem,12vw,10rem) 0;text-align:center;
+}
+.tagline-band p{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.12;color:var(--charcoal);
+}
+.tagline-band .lead{font-style:normal;}
+
+/* ============================================================
+   About
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(2.5rem,6vw,6rem);align-items:center;}
+.portrait-slot{
+  aspect-ratio:4/5;background:var(--bone-deep);
+  border:1px solid var(--line);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.portrait-slot::after{
+  content:"Portrait of Mas — editorial, natural light. Replace this frame.";
+  font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);
+  max-width:18ch;text-align:center;line-height:1.8;padding:1rem;
+}
+/*  To use a real portrait: <img src="mas-portrait.jpg" alt="Mas, founder and filmmaker" />
+    inside .portrait-slot, and the note hides automatically. */
+.portrait-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.portrait-slot img + .note{display:none;}
+.about-copy h2{font-size:clamp(2rem,4vw,3.4rem);font-weight:300;}
+.about-copy p{margin-top:1.3rem;color:var(--ink-muted);max-width:54ch;}
+.about-copy p.close{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--charcoal);}
+.about-cta{margin-top:2.2rem;display:flex;gap:1.6rem;flex-wrap:wrap;}
+
+/* ============================================================
+   The Long Story Approach — three principles
+   ============================================================ */
+.section-head{max-width:640px;margin-bottom:clamp(3rem,6vw,4.5rem);}
+.section-head h2{font-size:clamp(2rem,4.4vw,3.6rem);font-weight:300;margin-top:1.2rem;}
+.section-head p{margin-top:1rem;color:var(--ink-muted);}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,5vw,4rem);}
+.principle .num{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--accent);line-height:1;}
+.principle h3{font-size:1.5rem;font-weight:400;margin-top:1rem;line-height:1.2;}
+.principle p{margin-top:1rem;color:var(--ink-muted);font-size:0.98rem;}
+.principle .pdivider{width:34px;height:1px;background:var(--line);margin:1.1rem 0;}
+
+/* ============================================================
+   Selected films — fillable, honest empty states
+   ============================================================ */
+.films{background:var(--bone-deep);}
+.film-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.5rem,3vw,2.4rem);}
+.film-grid .wide{grid-column:1 / -1;}
+.film{
+  position:relative;aspect-ratio:16/10;background:var(--bone);
+  border:1px solid var(--line);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0.6rem;text-align:center;padding:1.5rem;
+  transition:border-color .4s var(--ease);
+}
+.film:hover{border-color:var(--accent);}
+.film .fnum{font-family:var(--serif);font-size:1.6rem;color:var(--accent);}
+.film .fnote{font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);max-width:24ch;line-height:1.8;}
+.films .footnote{margin-top:2.4rem;font-size:0.82rem;color:var(--ink-muted);font-style:italic;}
+/*  Replace each .film with a Vimeo embed once a film is ready, e.g.:
+    <div class="film"><iframe src="https://player.vimeo.com/video/XXXX" ...></iframe></div>
+    Brand rule: never present someone else's film as your own, and remove
+    empty slots before the site goes live — don't launch with placeholders. */
+
+/* ============================================================
+   Packages
+   ============================================================ */
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,2.5vw,2rem);align-items:stretch;}
+.pkg{
+  background:var(--bone);border:1px solid var(--line);
+  padding:clamp(1.8rem,3vw,2.6rem);display:flex;flex-direction:column;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.pkg:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(26,26,26,0.35);}
+.pkg.featured{border-color:var(--accent);position:relative;}
+.pkg.featured::before{
+  content:"Most booked";position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+  background:var(--accent);color:var(--bone);font-size:0.6rem;letter-spacing:0.22em;
+  text-transform:uppercase;padding:0.4rem 1rem;
+}
+.pkg .pkg-name{font-family:var(--serif);font-size:1.9rem;font-weight:400;}
+.pkg .pkg-price{font-family:var(--serif);font-size:1.1rem;color:var(--accent-deep);margin-top:0.3rem;font-style:italic;}
+.pkg .pkg-desc{margin-top:1.2rem;color:var(--ink-muted);font-size:0.96rem;}
+.pkg .pkg-best{margin-top:1.2rem;font-size:0.82rem;color:var(--ink-faint);line-height:1.7;}
+.pkg .pkg-best strong{color:var(--charcoal);font-weight:500;}
+.pkg .pkg-foot{margin-top:auto;padding-top:1.8rem;}
+
+/* ============================================================
+   FAQ accordion
+   ============================================================ */
+.faq-list{max-width:840px;margin:0 auto;border-top:1px solid var(--line);}
+.faq{border-bottom:1px solid var(--line);}
+.faq-q{
+  width:100%;background:none;border:0;cursor:pointer;text-align:left;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  padding:1.6rem 0;font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.5rem);
+  font-weight:400;color:var(--charcoal);
+}
+.faq-q .sign{font-family:var(--sans);font-size:1.2rem;color:var(--accent);transition:transform .4s var(--ease);flex-shrink:0;}
+.faq.open .faq-q .sign{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease);}
+.faq-a p{padding:0 0 1.7rem;color:var(--ink-muted);max-width:70ch;}
+
+/* ============================================================
+   Process
+   ============================================================ */
+.process{background:var(--bone-deep);}
+.steps{display:grid;gap:0;}
+.step{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,4vw,3.5rem);
+  padding:2rem 0;border-top:1px solid var(--line);align-items:baseline;
+}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step .snum{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--accent);font-weight:300;}
+.step h3{font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:400;}
+.step p{margin-top:0.6rem;color:var(--ink-muted);max-width:60ch;}
+
+/* ============================================================
+   Final invitation
+   ============================================================ */
+.invitation{background:var(--charcoal-soft);color:var(--bone);text-align:center;
+  padding:clamp(6rem,13vw,11rem) 0;}
+.invitation h2{font-size:clamp(2.4rem,6vw,5rem);font-weight:300;line-height:1.08;}
+.invitation h2 .italic{font-style:italic;color:var(--accent);}
+.invitation .btn{border-color:var(--accent);color:var(--accent);margin-top:2.8rem;}
+.invitation .btn:hover{background:var(--accent);color:var(--charcoal-soft);}
+
+/* ============================================================
+   Inquire
+   ============================================================ */
+.inquire{background:var(--bone);}
+.inquire-head{max-width:640px;margin-bottom:clamp(2.5rem,5vw,3.5rem);}
+.inquire-head h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:300;margin-top:1rem;}
+.inquire-head p{margin-top:1rem;color:var(--ink-muted);}
+.form{max-width:760px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.field{margin-bottom:1.6rem;display:flex;flex-direction:column;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.6rem;}
+.field input,.field select,.field textarea{
+  font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--charcoal);
+  background:transparent;border:0;border-bottom:1px solid var(--line);
+  padding:0.7rem 0;transition:border-color .3s var(--ease);
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:120px;}
+.checks{display:flex;flex-wrap:wrap;gap:0.8rem 1.6rem;margin-top:0.4rem;}
+.checks label{display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;
+  font-size:0.95rem;color:var(--charcoal);cursor:pointer;}
+.checks input{width:auto;}
+.form .btn{margin-top:0.6rem;}
+.form-note{margin-top:1.4rem;font-size:0.8rem;color:var(--ink-faint);max-width:60ch;line-height:1.7;}
+.form-success{display:none;font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--charcoal);padding:1rem 0;}
+.form-success.show{display:block;}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer{background:var(--charcoal-soft);color:var(--bone);padding:clamp(3.5rem,7vw,5rem) 0 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;}
+.footer .f-brand{font-family:var(--serif);font-size:1.4rem;}
+.footer .f-tag{font-style:italic;color:rgba(245,241,234,0.7);margin-top:0.6rem;font-family:var(--serif);}
+.footer h4{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-family:var(--sans);font-weight:500;}
+.footer a,.footer p{color:rgba(245,241,234,0.78);font-size:0.92rem;line-height:1.9;}
+.footer a:hover{color:var(--bone);}
+.footer-bottom{margin-top:3rem;padding-top:1.6rem;border-top:1px solid rgba(245,241,234,0.12);
+  font-size:0.74rem;color:rgba(245,241,234,0.5);}
+
+/* ============================================================
+   Scroll-reveal
+   ============================================================ */
+.reveal{opacity:0;transform:perspective(1200px) rotateX(7deg) translateY(38px);transform-origin:50% 100%;transition:opacity 1s var(--ease),transform 1.1s var(--ease);}
+.reveal.in{opacity:1;transform:perspective(1200px) rotateX(0) translateY(0);}
+.stagger > *{opacity:0;transform:perspective(1200px) rotateX(7deg) translateY(34px);transform-origin:50% 100%;transition:opacity .9s var(--ease),transform 1s var(--ease);}
+.stagger.in > *{opacity:1;transform:perspective(1200px) rotateX(0) translateY(0);}
+.stagger.in > *:nth-child(2){transition-delay:.1s;}
+.stagger.in > *:nth-child(3){transition-delay:.2s;}
+.stagger.in > *:nth-child(4){transition-delay:.3s;}
+.stagger.in > *:nth-child(5){transition-delay:.4s;}
+
+/* hero entrance */
+.hero .eyebrow,.hero h1 .ln,.hero-sub,.hero-cta{opacity:0;transform:translateY(26px);}
+.hero.loaded .eyebrow{animation:rise .9s var(--ease) .15s forwards;}
+.hero.loaded h1 .ln{animation:rise 1s var(--ease) forwards;}
+.hero.loaded h1 .ln:nth-child(1){animation-delay:.3s;}
+.hero.loaded h1 .ln:nth-child(2){animation-delay:.45s;}
+.hero.loaded .hero-sub{animation:rise .9s var(--ease) .7s forwards;}
+.hero.loaded .hero-cta{animation:rise .9s var(--ease) .85s forwards;}
+@keyframes rise{to{opacity:1;transform:none;}}
+.hero h1 .ln{display:block;}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .portrait-slot{max-width:420px;}
+  .principles{grid-template-columns:1fr;gap:2.8rem;}
+  .packages-grid{grid-template-columns:1fr;gap:2.2rem;}
+  .pkg.featured{order:-1;}
+  .film-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:2rem;}
+  .form-row{grid-template-columns:1fr;}
+  .nav{position:fixed;inset:0 0 0 auto;width:min(78vw,340px);background:var(--bone);
+    flex-direction:column;justify-content:center;gap:1.8rem;padding:2rem;
+    transform:translateX(100%);transition:transform .5s var(--ease);
+    box-shadow:-20px 0 60px -30px rgba(0,0,0,0.4);z-index:120;}
+  .nav.open{transform:none;}
+  .nav a{font-size:0.9rem;}
+  .menu-toggle{display:block;z-index:130;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  .reveal,.stagger>*,.hero .eyebrow,.hero h1 .ln,.hero-sub,.hero-cta{opacity:1!important;transform:none!important;}
+  html{scroll-behavior:auto;}
+}
+
+
+/* ============================================================
+   ============================================================
+   3D / DYNAMIC LAYER  (additive — base design above is untouched)
+   Delete everything below to restore the static editorial design.
+   ============================================================
+   ============================================================ */
+
+/* ---- Hero living background (Invitation video.mp4) ----
+   The warm cream/gold footage sits behind the hero text. A bone
+   overlay keeps the page reading warm-bone and the charcoal text
+   fully legible — the video adds motion, not a colour change. */
+.hero{ isolation:isolate; }
+.hero-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:-2;pointer-events:none;
+  /* slight zoom so parallax never reveals an edge */
+  transform:scale(1.08);
+  will-change:transform;
+}
+.hero-media-overlay{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      var(--bone) 0%,
+      rgba(245,241,234,0.90) 32%,
+      rgba(245,241,234,0.66) 62%,
+      rgba(245,241,234,0.46) 100%),
+    linear-gradient(to bottom,
+      rgba(245,241,234,0.55) 0%,
+      rgba(245,241,234,0.30) 40%,
+      rgba(245,241,234,0.55) 100%);
+}
+/* keep the warm paper grain readable above the film */
+.hero .hero-inner{ position:relative; z-index:1; }
+.hero .scroll-cue{ z-index:1; }
+
+/* ---- Subtle parallax helpers (transform only) ---- */
+.parallax{ will-change:transform; }
+
+/* ---- 3D tilt for editorial cards ----
+   Adds depth on pointer move; colours, borders, type unchanged. */
+.tilt-scene{ perspective:1100px; }
+.tilt{
+  transform:perspective(1100px) rotateX(0) rotateY(0) translateZ(0);
+  transform-style:preserve-3d;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  will-change:transform;
+}
+.tilt.is-tilting{
+  transition:transform .08s linear, box-shadow .5s var(--ease);
+}
+/* slight inner depth: children float forward a touch (small, so nothing spills) */
+.tilt > *{ transform:translateZ(8px); transform-style:preserve-3d; }
+.pkg.tilt > *{ transform:translateZ(6px); }
+
+/* ---- Accessibility: visible focus (negligible visual change) ---- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+
+/* ---- Touch / coarse pointers: no tilt (avoids sticky transforms) ---- */
+@media (hover:none){
+  .tilt, .tilt.is-tilting{ transform:none; }
+  .tilt > *{ transform:none; }
+}
+
+/* ---- Reduced motion: flatten every dynamic addition ---- */
+@media (prefers-reduced-motion:reduce){
+  .hero-video, .hero-canvas{ transform:none; }
+  .parallax{ transform:none!important; }
+  .tilt, .tilt.is-tilting{ transform:none!important; }
+  .tilt > *{ transform:none!important; }
+  .scroll-inout{ opacity:1!important; transform:none!important; }
+  .reveal, .reveal.in, .stagger > *, .stagger.in > *{ transform:none!important; }
+}
+
+
+/* ============================================================
+   ============================================================
+   FEATURE STYLES  (hero scrub canvas, ribbon, film video,
+   socials, nav hover) + DARK THEME. Additive.
+   ============================================================
+   ============================================================ */
+
+/* ---- Hero scrub canvas (Invitation video synced to scroll) ---- */
+.hero-canvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  display:block; z-index:-2; pointer-events:none;
+  -webkit-mask-image:radial-gradient(135% 125% at 50% 46%, #000 56%, transparent 97%);
+          mask-image:radial-gradient(135% 125% at 50% 46%, #000 56%, transparent 97%);
+}
+
+/* ---- Tagline band: bolder + animated gold ribbon ---- */
+.tagline-band{ position:relative; overflow:hidden; }
+.tagline-band .container{ position:relative; z-index:1; }
+.tagline-band p{ font-weight:500; }
+.tagline-band .lead{ font-weight:600; font-style:normal; }
+.ribbon{ display:flex; justify-content:center; margin-bottom:1.6rem; }
+.ribbon-svg{
+  width:clamp(150px,22vw,250px); height:auto; overflow:visible;
+  filter:drop-shadow(0 8px 20px rgba(168,137,91,0.28));
+  animation:ribbonSway 5.5s ease-in-out infinite; transform-origin:50% 30%;
+}
+.ribbon-svg .sheen{ animation:ribbonSheen 3.4s ease-in-out infinite; }
+@keyframes ribbonSway{ 0%,100%{ transform:rotate(-1.6deg) translateY(0); } 50%{ transform:rotate(1.6deg) translateY(-4px); } }
+@keyframes ribbonSheen{ 0%{ transform:translateX(-130%); opacity:0; } 45%{ opacity:.85; } 100%{ transform:translateX(150%); opacity:0; } }
+
+/* ---- Films: embedded sample video + Coming Soon slots ---- */
+.film.has-video{ padding:0; overflow:hidden; }
+.film-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; display:block; }
+.film .soon{
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.3rem,2.4vw,1.9rem); color:var(--ink-faint); letter-spacing:0.02em;
+}
+
+/* ---- Tighten the gap before a section ---- */
+.section.tight-top{ padding-top:clamp(2.5rem,5vw,4.5rem); }
+
+/* ---- Nav: bold-on-hover feedback (faux-bold, no layout shift) ---- */
+.nav a:hover, .nav a:focus-visible{
+  opacity:1;
+  text-shadow:0 0 .65px currentColor, 0 0 .65px currentColor;
+}
+
+/* ---- Footer socials ---- */
+.socials{ display:flex; flex-direction:column; gap:0.6rem; margin-top:0.2rem; }
+.socials a{ display:inline-flex; align-items:center; gap:0.65rem; color:rgba(245,241,234,0.78); }
+.socials a:hover{ color:#F5F1EA; }
+.social-ico{ width:17px; height:17px; fill:currentColor; flex:0 0 auto; }
+
+
+/* ============================================================
+   DARK THEME (warm charcoal) — active.
+   Delete this block to restore the warm-bone light design.
+   ============================================================ */
+:root{
+  --bone:#15120E;          /* page background — warm near-black */
+  --bone-deep:#1D1813;     /* alternate section background */
+  --charcoal:#F2ECE1;      /* primary text — now light */
+  --charcoal-soft:#0E0C09; /* deep bands / footer */
+  --ink-muted:#B4AB9C;     /* readable muted body */
+  --ink-faint:#8C8273;     /* labels, fine print */
+  --accent:#C6A36B;        /* warm gold, brightened for dark */
+  --accent-deep:#DCB57E;   /* lighter gold — reads as text on dark */
+  --line:rgba(242,236,225,0.14);
+  --line-soft:rgba(242,236,225,0.07);
+}
+/* fixes for rules that used --bone as a LIGHT value */
+.site-header.scrolled{ background:rgba(21,18,14,0.86); box-shadow:0 1px 0 var(--line-soft); }
+.invitation{ color:var(--charcoal); }
+.footer{ color:var(--charcoal); }
+.footer a:hover{ color:var(--charcoal); }
+/* warm gold ambient glow, slightly stronger on dark */
+body::before{ background:radial-gradient(120% 90% at 50% 0%, rgba(198,163,107,0.10), transparent 62%); }
+/* dark hero overlay: warm film reads on the charcoal page, text stays legible */
+.hero-media-overlay{
+  background:
+    linear-gradient(90deg, rgba(21,18,14,0.94) 0%, rgba(21,18,14,0.74) 36%, rgba(21,18,14,0.45) 70%, rgba(21,18,14,0.28) 100%),
+    linear-gradient(to bottom, rgba(21,18,14,0.60) 0%, rgba(21,18,14,0.12) 38%, rgba(21,18,14,0.70) 100%);
+}
+/* golden hover shadow on packages (#9) */
+.pkg:hover{ box-shadow:0 26px 55px -26px rgba(198,163,107,0.55), 0 0 0 1px rgba(198,163,107,0.22); }
+
+
+/* ============================================================
+   VIDEO SECTIONS — full-bleed scroll-scrubbed / looping film
+   ============================================================ */
+.vsec{ position:relative; }
+.vsec-bg{ position:absolute; inset:0; z-index:0; }
+.vsec-sticky{ position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+.vsec-canvas{ display:block; width:100%; height:100%; }
+.vsec-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; }
+.vsec-overlay{ position:absolute; inset:0; pointer-events:none; }
+.vsec-content{ position:relative; z-index:1; }
+.vsec-loop .vsec-bg{ overflow:hidden; }
+/* keep flex-item containers full width so inner text stays left-aligned */
+.film-stage .hero > .container, .approach > .vsec-content{ width:100%; }
+
+/* --- Film stage: hero + tagline over the invitation film --- */
+.film-stage{ position:relative; }
+.film-stage .hero{ background:transparent; }
+.film-stage .tagline-band{ background:transparent; }
+.stage-overlay{
+  background:
+    linear-gradient(90deg, rgba(21,18,14,0.90) 0%, rgba(21,18,14,0.62) 40%, rgba(21,18,14,0.34) 72%, rgba(21,18,14,0.22) 100%),
+    linear-gradient(to bottom, rgba(21,18,14,0.55) 0%, rgba(21,18,14,0.10) 38%, rgba(21,18,14,0.66) 100%);
+}
+
+/* --- Approach over the strip film --- */
+.approach{ min-height:120vh; display:flex; align-items:flex-start; padding-top:clamp(3rem,6vw,5rem); }
+.approach-overlay{
+  background:
+    linear-gradient(to bottom, rgba(21,18,14,0.74) 0%, rgba(21,18,14,0.54) 42%, rgba(21,18,14,0.74) 100%),
+    radial-gradient(120% 100% at 50% 50%, transparent 28%, rgba(21,18,14,0.5) 100%);
+}
+.approach .principle p{ color:#d8d0c2; }
+/* tighten the About → Approach gap (#6) */
+#about{ padding-bottom:clamp(2.5rem,5vw,4rem); }
+
+/* --- Invitation over the reel film --- */
+.invitation{ background:transparent; }
+.invitation-overlay{
+  background:linear-gradient(to bottom, rgba(14,12,9,0.76) 0%, rgba(14,12,9,0.56) 50%, rgba(14,12,9,0.80) 100%);
+}
+
+/* ============================================================
+   Golden depth shadows between sections (#4) + hover golds
+   ============================================================ */
+main > section, .film-stage{ position:relative; z-index:1; }
+main > section{ box-shadow:0 -20px 44px -28px rgba(198,163,107,0.42); }
+.invitation, .approach{ box-shadow:none; }      /* video bands manage their own depth */
+
+/* portrait golden glow on hover (#5) */
+.portrait-slot{ transition:box-shadow .5s var(--ease); }
+.portrait-slot:hover{ box-shadow:0 24px 55px -22px rgba(198,163,107,0.55), 0 0 0 1px rgba(198,163,107,0.35); }
+
+/* keep the scroll cue from crowding the buttons on short / small screens */
+@media (max-height:640px){ .scroll-cue{ display:none; } }
+@media (max-width:900px){ .approach{ min-height:auto; } }
+
+/* reduced motion: drop the extra min-height scroll room */
+@media (prefers-reduced-motion:reduce){ .approach{ min-height:auto; } }

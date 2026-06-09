@@ -1,0 +1,18 @@
+# ─── Large source media (NOT needed to run the site) ───────────────
+# GitHub rejects files >100MB. The deployed site uses the web-optimised
+# copies in /assets plus the extracted frames in /frames and /frames-strip,
+# so the original masters are excluded. Keep these locally for re-editing.
+/Vision Sample.mp4
+/Invitation video.mp4
+/strip.mp4
+/reel.mp4
+/mas.png
+
+# ─── Local tooling / editor / OS junk ──────────────────────────────
+.claude/
+.vscode/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.log

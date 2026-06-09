@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Long Story Films — Story-Driven Wedding Films · Northern Virginia</title>
+<meta name="description" content="Story-driven wedding films for couples whose story is bigger than the wedding day. Based in Northern Virginia, serving the DMV and destination weddings." />
+<meta name="theme-color" content="#F5F1EA" />
+
+<!-- Favicon — TODO: add /assets/favicon.png (and optionally .ico / apple-touch) -->
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+
+<!-- Open Graph — TODO: export /assets/og-image.jpg (1200×630) and set og:url to the live URL -->
+<meta property="og:title" content="Long Story Films — Story-Driven Wedding Films" />
+<meta property="og:description" content="The wedding is one day. Your story is longer than that." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/og-image.jpg" />
+<!-- <meta property="og:url" content="https://longstoryfilms.com/" /> -->
+
+<!-- Twitter Card — TODO: same og-image -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Long Story Films — Story-Driven Wedding Films" />
+<meta name="twitter:description" content="The wedding is one day. Your story is longer than that." />
+<meta name="twitter:image" content="assets/og-image.jpg" />
+
+<!-- Locked two-font system: Cormorant (serif display) + Inter (sans body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">Long Story <span class="light">Films</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#approach">Approach</a>
+      <a href="#films">Films</a>
+      <a href="#packages">Packages</a>
+      <a href="#process">Process</a>
+      <a href="inquire.html" class="nav-cta">Inquire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===== FILM STAGE: hero + tagline over the full-bleed, scroll-scrubbed invitation film ===== -->
+<div class="film-stage vsec" id="filmStage">
+  <!-- 242 frames in /frames are rendered to this pinned, full-viewport canvas
+       by js/app.js and advance as you scroll through the hero AND tagline. -->
+  <div class="vsec-bg">
+    <div class="vsec-sticky">
+      <canvas class="vsec-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="vsec-overlay stage-overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <section class="hero vsec-content" id="top">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="eyebrow">Story-Driven Wedding Films · Northern Virginia</span>
+        <h1>
+          <span class="ln">The wedding is one day.</span>
+          <span class="ln second">Your story is <em>longer</em> than that.</span>
+        </h1>
+        <p class="hero-sub">Story-driven wedding films for couples whose story is bigger than the wedding day. Based in Northern Virginia. Serving the DMV and destination weddings.</p>
+        <div class="hero-cta">
+          <a href="inquire.html" class="btn btn-gold">Begin Your Story <span class="arrow">→</span></a>
+          <a href="#films" class="link-arrow">See the films →</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span class="stem"></span> Scroll</div>
+  </section>
+
+  <section class="tagline-band vsec-content scroll-inout">
+    <div class="container">
+      <div class="ribbon" aria-hidden="true">
+        <svg class="ribbon-svg" viewBox="0 0 260 70" role="presentation">
+          <defs>
+            <linearGradient id="rgGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E4C892" />
+              <stop offset="0.5" stop-color="#C6A36B" />
+              <stop offset="1" stop-color="#7d6536" />
+            </linearGradient>
+            <clipPath id="rgClip"><rect x="34" y="22" width="192" height="26" rx="2" /></clipPath>
+          </defs>
+          <path d="M44 24 L8 35 L44 46 L37 35 Z" fill="#7d6536" />
+          <path d="M216 24 L252 35 L216 46 L223 35 Z" fill="#7d6536" />
+          <rect x="34" y="22" width="192" height="26" rx="2" fill="url(#rgGold)" />
+          <rect x="120" y="17" width="20" height="36" rx="2" fill="#9a7d49" />
+          <g clip-path="url(#rgClip)">
+            <rect class="sheen" x="34" y="22" width="42" height="26" fill="rgba(255,246,226,0.8)" />
+          </g>
+        </svg>
+      </div>
+      <p><span class="lead">It’s a long story.</span> Let’s tell it right.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section container" id="about">
+  <div class="about-grid">
+    <div class="portrait-slot reveal">
+      <img src="assets/mas.jpg" alt="Mas, founder and filmmaker" />
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">About</span>
+      <h2>A filmmaker who listens first.</h2>
+      <div class="rule"></div>
+      <p>Long Story Films is the work of Mas — a filmmaker who’s been telling wedding stories since long before this studio existed.</p>
+      <p>Before relocating to Northern Virginia, Mas spent years filming weddings across cultures — capturing the kind of family moments, quiet emotions, and meaningful traditions that most cameras miss.</p>
+      <p>Long Story Films is the continuation of that work. Built here, for couples whose weddings are part of a bigger story — a meeting, a courtship, a family, a culture, a future.</p>
+      <p>Every couple is interviewed before their wedding. Every film is structured like a short documentary. Every story is told from the beginning.</p>
+      <p class="close" style="font-weight:600;">Because the wedding is one day. The story is longer than that.</p>
+      <div class="about-cta">
+        <a href="inquire.html" class="link-arrow">Inquire →</a>
+        <a href="#films" class="link-arrow">See the films →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== APPROACH (strip.mp4 scrubbed behind) ===================== -->
+<section class="section approach vsec" id="approach">
+  <div class="vsec-bg">
+    <div class="vsec-sticky">
+      <canvas class="vsec-canvas" id="stripCanvas" aria-hidden="true"></canvas>
+      <div class="vsec-overlay approach-overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div class="container vsec-content">
+  <div class="section-head reveal">
+    <span class="eyebrow">The Long Story Approach</span>
+    <h2>How Long Story Films works</h2>
+    <p>Three principles that shape every wedding film we make.</p>
+  </div>
+  <div class="principles stagger">
+    <div class="principle">
+      <div class="num">01</div>
+      <h3>We start before the wedding day.</h3>
+      <div class="pdivider"></div>
+      <p>Every couple gets a pre-wedding story session — a real conversation about how you met, what built your bond, and the family who shaped you. Your voices become the spine of your film.</p>
+    </div>
+    <div class="principle">
+      <div class="num">02</div>
+      <h3>We film like documentary, not music video.</h3>
+      <div class="pdivider"></div>
+      <p>Every film has a clear beginning, middle, and end. Family is captured deliberately. Quiet moments matter as much as big ones. The story is built first; the music supports it, not the other way around.</p>
+    </div>
+    <div class="principle">
+      <div class="num">03</div>
+      <h3>We edit for permanence.</h3>
+      <div class="pdivider"></div>
+      <p>No trending sounds. No gimmicks that age out. Your film is built to feel right in five years, fifteen years, and forty. It’s a film for your grandchildren, not just your Instagram.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== FILMS ===================== -->
+<section class="section films" id="films">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Selected Films</span>
+      <h2>Selected films</h2>
+      <p>Each film is built from a real couple’s story. Click to watch.</p>
+    </div>
+    <div class="film-grid stagger">
+      <div class="film wide has-video">
+        <video class="film-video" controls preload="none" poster="assets/vision-poster.jpg">
+          <source src="assets/vision-sample.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="film"><div class="fnum">02</div><div class="soon">Coming Soon</div></div>
+      <div class="film"><div class="fnum">03</div><div class="soon">Coming Soon</div></div>
+      <div class="film"><div class="fnum">04</div><div class="soon">Coming Soon</div></div>
+      <div class="film"><div class="fnum">05</div><div class="soon">Coming Soon</div></div>
+    </div>
+    <p class="footnote reveal">We will showcase our work as we go.</p>
+  </div>
+</section>
+
+<!-- ===================== PACKAGES ===================== -->
+<section class="section container" id="packages">
+  <div class="section-head reveal">
+    <span class="eyebrow">Packages</span>
+    <h2>Three packages. Three lengths of story.</h2>
+    <p>Every wedding is different. Choose the version of your story that fits the day you’re planning. Full details available in our pricing guide — sent after you inquire.</p>
+  </div>
+  <div class="packages-grid stagger">
+    <div class="pkg">
+      <div class="pkg-name">The Story</div>
+      <div class="pkg-price">Starting at $2,800</div>
+      <p class="pkg-desc">A complete wedding film told through the day itself. Built around your voices, your vows, and the moments most people miss.</p>
+      <p class="pkg-best"><strong>Best for:</strong> Intimate weddings, single-day celebrations, focused video budgets.</p>
+      <div class="pkg-foot"><a href="inquire.html" class="link-arrow">Request the pricing guide →</a></div>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-name">The Long Story</div>
+      <div class="pkg-price">Starting at $4,200</div>
+      <p class="pkg-desc">Our signature wedding film. A short documentary of how you met, what you built, and the day it all became real.</p>
+      <p class="pkg-best"><strong>Best for:</strong> Most couples — multi-event weddings, family-centered celebrations, the full story told well.</p>
+      <div class="pkg-foot"><a href="inquire.html" class="link-arrow">Request the pricing guide →</a></div>
+    </div>
+    <div class="pkg">
+      <div class="pkg-name">The Whole Story</div>
+      <div class="pkg-price">Starting at $6,500</div>
+      <p class="pkg-desc">The complete archive. For multi-day weddings, multicultural celebrations, and families where every chapter deserves to be filmed.</p>
+      <p class="pkg-best"><strong>Best for:</strong> Multi-day weddings, South Asian / Afghan / Middle Eastern celebrations, full multi-event coverage.</p>
+      <div class="pkg-foot"><a href="inquire.html" class="link-arrow">Request the pricing guide →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section container tight-top" id="faq">
+  <div class="section-head reveal center" style="margin-left:auto;margin-right:auto;">
+    <span class="eyebrow">What Couples Ask</span>
+    <h2>What couples ask</h2>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq">
+      <button class="faq-q">How far in advance should we book?<span class="sign">+</span></button>
+      <div class="faq-a"><p>Most couples reach out 8–14 months before their wedding date, especially for peak season (May–October). We take on a limited number of weddings each season to give every story the time it deserves — earlier is always better.</p></div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">Do you travel?<span class="sign">+</span></button>
+      <div class="faq-a"><p>Yes. We’re based in Northern Virginia and serve the full DMV — Northern Virginia, DC, and Maryland — as well as destination weddings across the US and internationally. Travel beyond 60 miles from our base is billed at cost.</p></div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">What’s the difference between a story-driven film and a regular wedding video?<span class="sign">+</span></button>
+      <div class="faq-a"><p>A regular wedding video documents what happened on the wedding day. A story-driven wedding film tells why the wedding day matters — how you met, what built your bond, the family and culture you come from, and how the wedding day becomes part of that larger story. We interview every couple before the wedding so your voices and your story carry the film.</p></div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">When do we get our film?<span class="sign">+</span></button>
+      <div class="faq-a"><p>Standard delivery is 8 to 14 weeks after the wedding, depending on your package — 8–10 weeks for The Story, 10–12 weeks for The Long Story, and 12–14 weeks for The Whole Story. Rush delivery (4–6 weeks) is available as an add-on. We never publish a film without your approval first.</p></div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">Do you work with photographers?<span class="sign">+</span></button>
+      <div class="faq-a"><p>Always. Photographers are the first visual vendor; we work with your photographer, never against them. If you haven’t booked a photographer yet, we’re happy to recommend ones we love working with in the DMV.</p></div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">What if our wedding has multiple events?<span class="sign">+</span></button>
+      <div class="faq-a"><p>Multi-event weddings — engagement nights, mehndi/henna, nikkah, ceremony, and reception — are some of our favorite projects to film. The Whole Story package is specifically built for multi-day celebrations. We’re especially experienced with South Asian, Afghan, Persian, Arab, and multicultural weddings.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="section process" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Process</span>
+      <h2>The Long Story process</h2>
+      <p>From your first inquiry to the moment you watch your film — here’s how we work.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="snum">01</div><div><h3>Inquire</h3><p>You reach out through our contact form. We send back our pricing guide and a few questions about your wedding within 24 hours.</p></div></div>
+      <div class="step"><div class="snum">02</div><div><h3>Discovery call</h3><p>A 30-minute conversation — usually over Zoom. We hear about your wedding, your families, and your story. You hear about our process. No pressure, no sales pitch. If we’re a fit, we move forward.</p></div></div>
+      <div class="step"><div class="snum">03</div><div><h3>Book + story session</h3><p>We send a contract and a small retainer secures your date. A few weeks before the wedding, we sit down with you for a 45–90 minute story session — a real conversation that becomes the foundation of your film.</p></div></div>
+      <div class="step"><div class="snum">04</div><div><h3>The wedding</h3><p>We arrive early, work calmly, capture the day with intention, and stay out of the way. You won’t notice us much — that’s the point.</p></div></div>
+      <div class="step"><div class="snum">05</div><div><h3>The film</h3><p>Within 8–14 weeks, you receive your wedding film, your ceremony edit, and your social cuts. One round of revisions is included. After that, the film is yours forever.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL INVITATION (reel.mp4 looping behind) ============ -->
+<section class="invitation vsec-loop">
+  <div class="vsec-bg">
+    <video class="vsec-video" id="reelVideo" autoplay muted loop playsinline preload="metadata"
+           poster="assets/reel-poster.jpg" aria-hidden="true">
+      <source src="assets/reel.mp4" type="video/mp4" />
+    </video>
+    <div class="vsec-overlay invitation-overlay" aria-hidden="true"></div>
+  </div>
+  <div class="container vsec-content">
+    <h2>Every wedding is one day.<br /><span class="italic">Yours deserves the long version.</span></h2>
+    <a href="inquire.html" class="btn">Begin Your Story <span class="arrow">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="f-brand">Long Story Films</div>
+      <div class="f-tag">It’s a long story. Let’s tell it right.</div>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <p><a href="inquire.html">Begin your story →</a></p>
+      <p><a href="mailto:hello@longstoryfilms.com">hello@longstoryfilms.com</a></p>
+      <p><a href="https://www.longstoryfilms.com" target="_blank" rel="noopener">www.longstoryfilms.com</a></p>
+      <div class="socials">
+        <a href="https://instagram.com/longstoryfilms.us" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="social-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 1 1 0 10.92 5.46 5.46 0 0 1 0-10.92zm0 1.62a3.84 3.84 0 1 0 0 7.68 3.84 3.84 0 0 0 0-7.68zm5.65-2.91a1.28 1.28 0 1 1 0 2.56 1.28 1.28 0 0 1 0-2.56z"/></svg>
+          @longstoryfilms.us
+        </a>
+        <a href="https://facebook.com/longstoryfilmsUS" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg class="social-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          @longstoryfilmsUS
+        </a>
+        <a href="https://www.tiktok.com/@longstoryfilms.us" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg class="social-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 3c.3 2.1 1.5 3.4 3.5 3.5v2.4c-1.2.1-2.3-.3-3.5-1v5.6c0 3.4-2.5 5.9-5.7 5.9A5.6 5.6 0 0 1 5.2 13c.1-2.9 2.4-5.3 5.3-5.3.3 0 .6 0 .9.1v2.6c-.3-.1-.6-.2-.9-.2-1.5 0-2.7 1.3-2.6 2.8 0 1.5 1.2 2.6 2.6 2.6 1.5 0 2.6-1.2 2.6-2.8V3h3.4z"/></svg>
+          @longstoryfilms.us
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Where</h4>
+      <p>Based in Northern Virginia.<br />Serving the DMV and destination weddings.</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    © 2026 Long Story Films · All films and images shared with couples’ permission
+  </div>
+</footer>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>

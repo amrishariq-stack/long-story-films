@@ -16,7 +16,7 @@
   --serif:'Cormorant', Georgia, 'Times New Roman', serif;
   --sans:'Inter', system-ui, -apple-system, sans-serif;
   --ease:cubic-bezier(0.22,1,0.36,1);
-  --maxw:1200px;
+  --maxw:1320px;
   --gut:clamp(1.4rem,5vw,5rem);
 }
 
@@ -585,8 +585,8 @@ body::before{ background:radial-gradient(120% 90% at 50% 0%, rgba(198,163,107,0.
    Golden depth shadows between sections (#4) + hover golds
    ============================================================ */
 main > section, .film-stage{ position:relative; z-index:1; }
-main > section{ box-shadow:0 -20px 44px -28px rgba(198,163,107,0.42); }
-.invitation, .approach{ box-shadow:none; }      /* video bands manage their own depth */
+/* full-width gold divider lines between sections — top/bottom only, never sides */
+main > section, .footer{ border-top:1px solid rgba(198,163,107,0.20); }
 
 /* portrait golden glow on hover (#5) */
 .portrait-slot{ transition:box-shadow .5s var(--ease); }
@@ -609,5 +609,47 @@ main > section{ box-shadow:0 -20px 44px -28px rgba(198,163,107,0.42); }
 .f-web a{ color:var(--accent); font-size:0.92rem; letter-spacing:0.05em; }
 .f-web a:hover{ color:#F5F1EA; }
 
-/* About & Packages: narrower + centred with side margins like the other sections */
-#about, #packages{ max-width:1080px; }
+/* (About & Packages are now full-width sections with an inner .container,
+    matching Films/Process — so the gold divider reads top/bottom, not as a
+    boxed frame floating in empty side space.) */
+.portrait-slot{ max-width:470px; }   /* keep portrait tidy on the wider layout */
+
+
+/* ============================================================
+   Responsive hardening — phones & tablets
+   ============================================================ */
+html, body{ max-width:100%; overflow-x:clip; }
+
+/* Tablets / iPad */
+@media (max-width:1024px){
+  .section{ padding:clamp(4rem,9vw,6.5rem) 0; }
+  .about-grid{ gap:clamp(2rem,5vw,3.5rem); }
+}
+
+/* Phones */
+@media (max-width:768px){
+  .section{ padding:3.4rem 0; }
+  .section.tight-top{ padding-top:2.6rem; }
+  .hero{ padding-top:6.5rem; padding-bottom:5rem; }
+  .hero h1{ font-size:clamp(2.4rem,10.5vw,3.4rem); }
+  .hero-sub{ font-size:1rem; }
+  .tagline-band p{ font-size:clamp(1.7rem,8vw,2.4rem); }
+  .about-copy h2, .section-head h2, .inquire-head h2{ font-size:clamp(1.9rem,8vw,2.4rem); }
+
+  /* Video sections: cover the section exactly instead of a tall pinned canvas */
+  .vsec-sticky{ position:absolute; inset:0; height:100%; }
+  .approach{ min-height:auto; padding-top:3.4rem; }
+
+  /* darker overlays so text stays readable over the films on small screens */
+  .stage-overlay{ background:linear-gradient(to bottom, rgba(21,18,14,0.62), rgba(21,18,14,0.34) 42%, rgba(21,18,14,0.74)); }
+  .approach-overlay{ background:rgba(21,18,14,0.66); }
+  .invitation-overlay{ background:rgba(14,12,9,0.7); }
+}
+
+/* Small phones */
+@media (max-width:430px){
+  .hero h1{ font-size:clamp(2.1rem,11.5vw,2.9rem); }
+  .pkg{ padding:1.6rem; }
+  .nav{ width:min(86vw,320px); }
+  .footer-bottom{ font-size:0.7rem; }
+}

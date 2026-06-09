@@ -113,7 +113,10 @@ if(form){
      melts into the charcoal page). Used by the hero/tagline stage
      (Invitation film) and the Approach section (strip film).
      ============================================================ */
-  function makeScrub(section, canvas, pathFn, count, still){
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  function makeScrub(section, canvas, pathFn, count, still, opts){
+    opts = opts || {};
     if(!section || !canvas) return;
     const ctx = canvas.getContext("2d", { alpha:false });
     const frames = new Array(count);
@@ -152,28 +155,43 @@ if(form){
       const img = new Image();
       img.onload = img.onerror = ()=>{
         frames[i] = img.complete ? img : frames[i];
-        if(i===0 || i===still) draw(reduceMotion.matches ? still : frameNow(), true);
+        if(i===0 || i===still) draw((reduceMotion.matches || isMobile) ? still : frameNow(), true);
       };
       img.src = pathFn(i);
     }
     size();
-    [0, still].forEach(load);
-    let n = 1;
-    (function chain(){ if(n>=count) return; if(n!==still) load(n); n++; requestAnimationFrame(chain); })();
     window.addEventListener("resize", size, {passive:true});
 
-    if(reduceMotion.matches){ draw(still, true); }
-    else {
-      let raf=false;
-      const onScroll=()=>{ if(raf) return; raf=true; requestAnimationFrame(()=>{ draw(frameNow()); raf=false; }); };
-      window.addEventListener("scroll", onScroll, {passive:true});
+    // Mobile or reduced-motion: load ONLY the still frame, no scrubbing, no bulk fetch.
+    if(isMobile || reduceMotion.matches){ load(still); return; }
+
+    // Progressive preload, started immediately (eager) or when near (lazy).
+    let started = false;
+    function startLoading(){
+      if(started) return; started = true;
+      [0, still].forEach(load);
+      let n = 1;
+      (function chain(){ if(n>=count) return; if(n!==still) load(n); n++; requestAnimationFrame(chain); })();
+    }
+    let raf=false;
+    const onScroll=()=>{ if(raf) return; raf=true; requestAnimationFrame(()=>{ draw(frameNow()); raf=false; }); };
+    window.addEventListener("scroll", onScroll, {passive:true});
+
+    if(opts.lazy){
+      // begin fetching only when the section is within ~1.5 viewports
+      const io = new IntersectionObserver((es)=>es.forEach(e=>{
+        if(e.isIntersecting){ startLoading(); io.disconnect(); }
+      }),{rootMargin:"150% 0px"});
+      io.observe(section);
+    } else {
+      startLoading();
       onScroll();
     }
   }
   makeScrub(document.getElementById("filmStage"), document.getElementById("heroCanvas"),
-            (i)=>`frames/frame_${String(i+1).padStart(4,"0")}.webp`, 242, 188);
+            (i)=>`frames/frame_${String(i+1).padStart(4,"0")}.webp`, 121, 94);
   makeScrub(document.getElementById("approach"), document.getElementById("stripCanvas"),
-            (i)=>`frames-strip/frame_${String(i+1).padStart(4,"0")}.webp`, 242, 120);
+            (i)=>`frames-strip/frame_${String(i+1).padStart(4,"0")}.webp`, 121, 60, {lazy:true});
 
   /* ---- Reel: looping background video behind the final invitation ---- */
   const reel = document.getElementById("reelVideo");

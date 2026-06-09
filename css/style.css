@@ -598,3 +598,16 @@ main > section{ box-shadow:0 -20px 44px -28px rgba(198,163,107,0.42); }
 
 /* reduced motion: drop the extra min-height scroll room */
 @media (prefers-reduced-motion:reduce){ .approach{ min-height:auto; } }
+
+/* website under the hero paragraph */
+.hero-web{ margin-top:1.1rem; font-size:0.84rem; letter-spacing:0.12em; }
+.hero-web a{ color:var(--accent-deep); border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .4s var(--ease); }
+.hero-web a:hover{ border-color:var(--accent); }
+
+/* website under the footer slogan */
+.f-web{ margin-top:0.7rem; }
+.f-web a{ color:var(--accent); font-size:0.92rem; letter-spacing:0.05em; }
+.f-web a:hover{ color:#F5F1EA; }
+
+/* About & Packages: narrower + centred with side margins like the other sections */
+#about, #packages{ max-width:1080px; }

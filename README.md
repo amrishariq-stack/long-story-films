@@ -14,8 +14,8 @@ inquire.html        Standalone inquiry form (Formspree-ready)
 css/style.css       All styles. Warm-bone base design + appended 3D/Dynamic layer + Dark theme
 js/app.js           Behaviour: nav, FAQ, form, scroll-scrubbed films, parallax, 3D tilt
 assets/             Web-optimised media (portrait, sample film, posters, reel)
-frames/             242 webp frames — the Invitation film (hero/tagline scrub)
-frames-strip/       242 webp frames — the strip film (behind Approach)
+frames/             121 webp frames — the Invitation film (hero/tagline scrub)
+frames-strip/       121 webp frames — the strip film (behind Approach, lazy-loaded)
 ```
 
 ## Run locally
@@ -47,8 +47,7 @@ Cormorant (serif display) + Inter (sans body), loaded from Google Fonts. Two fon
 - [ ] **Formspree endpoint** — replace `REPLACE_ME` in `inquire.html` with your form id
 - [ ] `assets/favicon.png`
 - [ ] `assets/og-image.jpg` (1200×630) and set `og:url` to the live domain
-- [ ] Real **film embeds** for the "Coming Soon" slots (Vimeo) — remove empty slots before launch
-- [ ] Optional: replace `assets/hero-loop.mp4` (currently unused) / refresh sample film
+- [ ] Real **film embeds** for the five "Coming Soon" slots (Vimeo) — remove empty slots before launch
 
 ## Media note
 
